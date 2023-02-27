@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        .logbox{
+            background-color: rgba(128, 128, 128, 0.362);
+            width: 450px;
+            margin-top: 60px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .logbox input{
+            width: 250px;
+            height: 30px;
+            margin-top: 25px;
+            padding-left: 25px;
+            border-radius: 10px;
+            border: 2px solid #ec9898;
+              
+        }
+        .logbox button{
+            background-color: rgb(102, 10, 10);
+            color: white;
+            width: 145px;
+            height: 45px;
+            border-radius: 10px;
+            font-size: large;
+            margin-top: 35px;
+            margin-bottom: 30px;
+            border: none;
+        }
+    </style>
+        
+</head>
+<body background="{% static 'images/register.jpg' %}">
+    <center>
+        <div class="logbox">
+            <h2 style="color:white">Register</h2>
+            <form action="{% url 'regsubpage' %}">
+            <input type="text" placeholder="Firstname" name="fname" >
+            <br>
+            <input type="text" placeholder="Lastname" name="lname">
+            <br>
+            <input type="text" placeholder="Username" name="uname" required>
+            <br>
+            <input type="text" placeholder="Email" name="email" required>
+            <br>
+            <input type="password" placeholder="Password" name="pswd" required>
+            <br>
+            <input type="password" placeholder="Re-password" name="repswd">
+            <br>
+            <button type="submit">Submit</button>
+            <br>
+            <font color="red">{{msg}}</font>
+            </form>
+        </div>
+        </center>
+</body>
+</html>

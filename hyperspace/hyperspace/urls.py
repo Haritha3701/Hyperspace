@@ -19,5 +19,9 @@ from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",views.samp)
+    path("",views.samp),
+    path('login/',views.login),
+    path('register/',views.register),
+    path('login/logsub/',views.logsub,name="loginsubpage"),
+    path('register/regsub/',views.regsub,name="regsubpage")
 ]
