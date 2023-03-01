@@ -41,7 +41,8 @@
     <center>
         <div class="logbox">
             <h2 style="color:white">Register</h2>
-            <form action="{% url 'regsubpage' %}">
+            <form action="{% url 'regpage' %}" method="POST">
+            {% csrf_token %}
             <input type="text" placeholder="Firstname" name="fname" >
             <br>
             <input type="text" placeholder="Lastname" name="lname">

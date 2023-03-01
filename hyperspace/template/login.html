@@ -39,7 +39,8 @@
     <center>
     <div class="logbox">
         <h2 style="color:white">Login</h2>
-        <form action="{% url 'loginsubpage' %}">
+        <form action="{% url 'loginpage' %}" method="POST">
+        {% csrf_token %}
         <input type="text" placeholder="Username" name="uname" required>
         <br>
         <input type="password" placeholder="Password" name="pname" required>
