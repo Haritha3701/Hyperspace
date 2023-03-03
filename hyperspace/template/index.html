@@ -195,13 +195,13 @@
 
 
 
-            {% for i in "abcde" %}
+            {% for i in data %}
             <div class="col-lg-4 col-sm-12" >
-              <h2 class="easy_text">Easy Surfing</h2>
-              <h1 class="internet_text">Internet</h1>
-              <div class="month_main clearfix"style="background-image: url({% static 'images/img-1.png' %});">
-                <h1 class="dolor_text">$24.99</h1>
-                <h2 class="month_text">Month</h2>
+              <h2 class="easy_text">₹ {{i.amount}}</h2>
+              <h1 class="internet_text">{{i.data}}</h1>
+              <div class="month_main clearfix"style="background-image: url({{i.img.url}});">
+                <h1 class="dolor_text"> </h1>
+                <h2 class="month_text">Month {{i.duration}}</h2>
                 <p class="long_text">It is a long established f
                 act distracteontent </p>
               </div>

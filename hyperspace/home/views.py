@@ -1,11 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http.response import HttpResponse
 from django.contrib.auth.models import auth,User
+from product.models import plans
 
 # Create your views here.
 
 def samp(request):
-    return render(request,"index.html")
+    data=plans.objects.all()
+
+    return render(request,"index.html",{"data":data})
 
 def login(request):
     if request.method=="POST":

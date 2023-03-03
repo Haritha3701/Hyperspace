@@ -7,4 +7,5 @@ class plans(models.Model):
     img=models.ImageField(upload_to="pic")
     speed=models.FloatField()
     data=models.CharField(max_length=200)
+    desc=models.TextField()
     date=models.DateTimeField(auto_now_add=True)
