@@ -196,17 +196,20 @@
 
 
             {% for i in data %}
+            
             <div class="col-lg-4 col-sm-12" >
               <h2 class="easy_text">₹ {{i.amount}}</h2>
-              <h1 class="internet_text">{{i.data}}</h1>
+              <a href="product?id={{i.id}}">
+                <h1 class="internet_text">{{i.data}}</h1>
+              </a>
               <div class="month_main clearfix"style="background-image: url({{i.img.url}});">
-                <h1 class="dolor_text"> </h1>
-                <h2 class="month_text">Month {{i.duration}}</h2>
-                <p class="long_text">It is a long established f
-                act distracteontent </p>
+                <h1 class="dolor_text">{{i.duration}} Months</h1>
+                <h2 class="month_text">Speed {{i.speed}}</h2>
+                <p class="long_text">{{i.desc}}</p>
               </div>
               <br><br>
             </div>
+            
             {% endfor %}
 
 
