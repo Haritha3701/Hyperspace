@@ -30,6 +30,58 @@
 <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<style>
+  .commentbox{
+    background-color:rgb(253, 68, 68);
+    width: 800px;
+    height: 400px;
+    padding: 6px;
+    
+    border-radius: 30px; 
+    overflow: auto;
+    color: black;
+  
+  }
+
+  .commentbox p{
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+  }
+
+  .commententer{
+    width: 800px;
+    height: 150px;
+    background-color: red;
+    margin-top: 30px;
+    border-radius: 30px;
+    padding: 20px;
+  }
+
+  .commententer textarea{
+    width: 500px;
+    height: 100px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+  }
+
+  .commententer button{
+    border-radius: 10px;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+    color: white;
+    position: relative;
+    bottom: 20px;
+    left: 10px;
+  }
+
+  
+
+</style>
 </head>
 <body>
     <!-- header section start -->
@@ -91,8 +143,29 @@
             </div>
           </div>
         </div>
-      </div>
+        <h2>Comments</h2>
+        <div class="commentbox">
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="commententer">
+          <form action="{% url 'commentbox' %}">
+          <textarea placeholder="Enter your comment here" name="comment"></textarea>
+          <input type="hidden" name="user" value="{{user.username}}">
+          <input type="hidden" name="proid" value="{{data.id}}">
+          <button type="submit">Submit</button>
+          
+          </form>
+        </div>
+        {% endif %}
     </div>
+    
     <!-- about section end -->
     <!-- footer section start -->
     <div class="footer_section layout_padding">
