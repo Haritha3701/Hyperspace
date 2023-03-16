@@ -10,7 +10,9 @@ def test(request):
 def details(request):
     id=request.GET["id"]
     data=plans.objects.get(id=id)
-    return render(request,"details.html",{"data":data})
+    r=render(request,"details.html",{"data":data})
+    r.set_cookie("price",data.amount)
+    return r
 
 def commentsub(request):
     message=request.GET["comment"]

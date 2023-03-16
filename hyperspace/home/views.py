@@ -7,7 +7,11 @@ from product.models import plans
 
 def samp(request):
     data=plans.objects.all()
-
+    if "user" in request.COOKIES and "price" in request.COOKIES:
+        name=request.COOKIES["user"]
+        price=request.COOKIES["price"]
+        return render(request,"index.html",{"data":data,"name":name,"price":price})
+    
     return render(request,"index.html",{"data":data})
 
 def login(request):
@@ -18,8 +22,11 @@ def login(request):
             user=auth.authenticate(username=usr,password=pwd)
             if user is not None:
                 auth.login(request,user)
+                
                 msg="login successfully"
-                return redirect("/")
+                res=redirect("/")
+                res.set_cookie("user",usr)
+                return res
             else:
                 msg="Invalid username and password"
                 return render(request,"login.html",{"msg":msg})
@@ -93,5 +100,8 @@ def regsub(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect("/")
+    res=redirect("/")
+    res.delete_cookie("name")
+    res.delete_cookie("user")
+    return res
     
