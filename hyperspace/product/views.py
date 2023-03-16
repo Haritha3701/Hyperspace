@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import plans
+from django.shortcuts import render,redirect
+from .models import plans,comments
+
 
 # Create your views here.
 
@@ -12,5 +13,9 @@ def details(request):
     return render(request,"details.html",{"data":data})
 
 def commentsub(request):
-    cmt=request.GET["comment"]
-    return render(request,"test.html",{"comments":cmt})
+    message=request.GET["comment"]
+    usr=request.GET["user"]
+    id=request.GET["proid"]
+    cmt=comments.objects.create(name=usr,msg=message,pro_id=id)
+    cmt.save();
+    return redirect("/product/?id="+str(id))

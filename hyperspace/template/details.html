@@ -145,12 +145,13 @@
         </div>
         <h2>Comments</h2>
         <div class="commentbox">
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
-        <p><b style="font-size:18px;">Hari </b><small>- 9 March,2023 Wednesday</small><br> Good service</p>
+        {% if data.cmt.all %}
+        {% for i in data.cmt.all %}
+        <p><b style="font-size:18px;">{{i.name}}</b><small>{{i.date}}</small>{{i.msg}}<br></p>
+        {% endfor %}
+        {% else %}
+        <h2>No comment</h2>
+        {% endif %}
         </div>
 
         {% if user.is_authenticated %}
@@ -160,7 +161,6 @@
           <input type="hidden" name="user" value="{{user.username}}">
           <input type="hidden" name="proid" value="{{data.id}}">
           <button type="submit">Submit</button>
-          
           </form>
         </div>
         {% endif %}
