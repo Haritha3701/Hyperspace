@@ -1,3 +1,8 @@
-from django.test import TestCase
+limit=int(input("Enter limit "))
+n=[]
+for i in range(limit):
+    num=input("Enter value ")
+    n.insert(0,num)
+    print(n)
 
-# Create your tests here.
+    

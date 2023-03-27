@@ -79,6 +79,17 @@
     left: 10px;
   }
 
+  .recent{
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+
+  .recent img{
+    margin-left: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 25px;
+  }
   
 
 </style>
@@ -143,6 +154,15 @@
             </div>
           </div>
         </div>
+        <br>
+        <br>
+        <div class="recent">
+          {% for i in obj %}
+          <img src="{{i.img.url}}">
+          {% endfor %}
+
+        </div>
+        
         <h2>Comments</h2>
         <div class="commentbox">
         {% if data.cmt.all %}
