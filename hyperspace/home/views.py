@@ -104,4 +104,7 @@ def logout(request):
     res.delete_cookie("name")
     res.delete_cookie("user")
     return res
+
+def test(request):
+    return render(request,"test.html")
     
