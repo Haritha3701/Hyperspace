@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import plans,comments
+from django.http.response import JsonResponse
 
 
 # Create your views here.
@@ -28,9 +29,8 @@ def details(request):
 
     data=plans.objects.get(id=id)
     
-    
-
     return render(request,"details.html",{"data":data,"obj":obj})
+    
     
 def commentsub(request):
     message=request.GET["comment"]
@@ -39,3 +39,14 @@ def commentsub(request):
     cmt=comments.objects.create(name=usr,msg=message,pro_id=id)
     cmt.save();
     return redirect("/product/?id="+str(id))
+
+def autolist(request):
+    if "term" in request.GET:
+        name=request.GET["term"]
+        print(name)
+        data=plans.objects.filter(amount__istartswith=name)
+        li=[]
+        for i in data:
+            li.append(str(i.amount))
+        return JsonResponse(li,safe=False)
+    

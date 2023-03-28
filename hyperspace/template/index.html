@@ -30,6 +30,40 @@
 <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<style>
+  .search{
+    width: 600px;
+    height: 60px;
+    padding-left: 20px;
+    border-radius: 30px;
+    padding-right: 50px;
+    border: rgb(231, 48, 48) solid 2px;
+    
+  }
+  
+  .searchbtn{
+    background-color: rgb(231, 48, 48);
+    width: 150px;
+    height: 50px;
+    color: white;
+    border-radius: 30px;
+    font-size: medium;
+    margin-left: -160px;
+    margin-top: 10px;
+    }
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $( function() {
+    
+      $( "#tags" ).autocomplete({
+        source: "{% url 'autolist' %}"
+      });
+    } );
+    </script>
 </head>
 <body>
     <!-- header section start -->
@@ -61,7 +95,7 @@
               </li>
               {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">              
+            <form class="form-inline my-2 my-lg-0">             
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">GET STARTED</button>
             </form>
             <div class="search_icon">
@@ -89,7 +123,7 @@
                   <h1 class="Shows_text">Shows And Movies</h1>
                   <p class="there_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or</p>
                   <div class="start_bt"><a href="#">Start Now</a></div>
-                  <div class="read_bt"><a href="#">Read More</a></div>
+                  <div class="read_bt"><a href="#">Read More</a></div><br>   
                 </div>
                 <div class="col-md-6">
                   <div class="images_1"><img src="{% static 'images/img-1.png' %}"></div>
@@ -188,6 +222,12 @@
     <div class="product_section layout_padding">
       <div class="container">
         <h2 class="tariffs_text">Tariffs</h2>
+
+        <form action="{% url 'search' %}">
+        <input class="search" id="tags">
+        <button type=submit class="searchbtn">Search</button>
+        </form>       
+
         <h1 class="choose_text">Choose your plan</h1>
         <p class="lorem_text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum, est ac faucibus hendrerit, mauris ante viverra urna, in elementum urna est ut ligula.</p>
         <div class="product_section2">
@@ -265,6 +305,7 @@
           <div class="col-sm-8">
             <div class="mail_main">
               <input type="text" class="address_text1" placeholder="Enter your address" name="text">
+              
               <button type="button" class="get_bt1">GET STARTED</button>
             </div>
           </div>
