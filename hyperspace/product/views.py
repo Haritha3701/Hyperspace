@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import plans,comments
 from django.http.response import JsonResponse
-
+from django.core.cache import cache
 
 # Create your views here.
 
@@ -11,7 +11,6 @@ def test(request):
 def details(request):
     id=request.GET["id"]
     
-
     if "recent" in request.session:
         if id not in request.session["recent"]:
             request.session["recent"].insert(0,id)
@@ -50,3 +49,13 @@ def autolist(request):
             li.append(str(i.amount))
         return JsonResponse(li,safe=False)
     
+def details2(request):
+    id=request.GET["id"]
+    if cache.get(id):
+        print("DATA FROM CACHE")
+        data=cache.get(id)
+    else:
+        print("DATA FROM DATABASE")
+        data=plans.objects.get(id=id)
+        cache.set(id,data)
+    return render(request,"details.html",{"data":data})
